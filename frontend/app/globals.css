@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+}
+
+/* ── Base resets ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f9fafb;
+  color: #111827;
+  min-height: 100vh;
+}
+
+/* ── Typography ──────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* ── Prose (report viewer) ───────────────────────────────────────────────── */
+.prose h1 {
+  @apply text-2xl font-bold text-gray-900 mt-8 mb-3 border-b border-gray-100 pb-2;
+}
+.prose h2 {
+  @apply text-xl font-semibold text-gray-800 mt-6 mb-2;
+}
+.prose h3 {
+  @apply text-base font-semibold text-gray-700 mt-4 mb-1;
+}
+.prose p {
+  @apply text-sm leading-relaxed text-gray-700 mb-3;
+}
+.prose ul {
+  @apply list-disc list-inside text-sm text-gray-700 mb-3 space-y-1;
+}
+.prose li {
+  @apply leading-relaxed;
+}
+.prose strong {
+  @apply font-semibold text-gray-900;
+}
+.prose em {
+  @apply italic text-gray-600;
+}
+.prose a {
+  @apply text-indigo-600 underline underline-offset-2 hover:text-indigo-800;
+}
+.prose hr {
+  @apply border-gray-200 my-6;
+}
+.prose code {
+  @apply font-mono text-xs bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded;
+}
+.prose pre {
+  @apply bg-gray-900 text-gray-100 text-xs rounded-lg p-4 overflow-x-auto my-4;
+}
+
+/* ── Scrollbar (webkit) ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out both;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 6px;
+}
